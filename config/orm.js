@@ -4,7 +4,7 @@ var orm = {
 
     //FOR USERS
     //pull user data
-    selectUserhere: function (tableInput, colToSearch, valOfCol, cb) {
+    selectUserWhere: function (tableInput, colToSearch, valOfCol, cb) {
         var queryString = "SELECT * FROM ?? WHERE ?? = ?";
         connection.query(queryString, [tableInput, colToSearch, valOfCol], function (err, result) {
           if (err) throw err;

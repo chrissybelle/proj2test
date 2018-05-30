@@ -1,5 +1,5 @@
 // Requiring our models and passport as we've configured it
-var passport = require("../config/passport");
+var passport = require("../config/passport"); //cc: added ".js" to file
 
 module.exports = function (app) {
 
@@ -11,6 +11,7 @@ module.exports = function (app) {
       }
       if (!user) {
         res.status(401)
+        console.log(info)
         res.json(info.message)
       }
       else {

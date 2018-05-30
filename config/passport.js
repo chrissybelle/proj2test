@@ -2,7 +2,7 @@ var passport = require("passport");
 var LocalStrategy = require("passport-local").Strategy;
 
 var bcrypt = require('bcrypt-nodejs');
-var model = require("../models/users.js"); //CC: DO WE NEED TO EDIT TO USERS.JS?
+var model = require("../models/users"); //CC: DO WE NEED TO EDIT TO USERS.JS? - i added ".js"
 
 // Telling passport we want to use a Local Strategy. In other words, we want login with a username/email and password
 passport.use(
@@ -14,7 +14,7 @@ passport.use(
     passReqToCallback: true // allows us to pass back the entire request to the callback
   },
     function (req, username, password, done) { // callback with username and password from our form
-      model.selectUserWhere("username", username, function (err, rows) {
+      model.selectWhere("users", username, function (err, rows) {
         if (err)
           return done(err);
         if (!rows.length) {
@@ -42,7 +42,7 @@ passport.use(
     function (req, username, password, done) {
       // find a user whose email is the same as the forms email
       // we are checking to see if the user trying to login already exists
-      model.selectUserWhere("username", username, function (err, rows) {
+      model.selectWhere("users", username, function (err, rows) {
         if (err)
           return done(err);
         if (rows.length) {
@@ -55,7 +55,7 @@ passport.use(
             password: bcrypt.hashSync(password, null, null)  // use the generateHash function in our user model
           };
 
-          model.createUser({ 'username': newUser.username, 'password': newUser.password }, function (err, rows) {
+          model.create({ 'username': newUser.username, 'password': newUser.password }, function (err, rows) {
             newUser.id = rows.insertId;
 
             return done(null, newUser);

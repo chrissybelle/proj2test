@@ -1,14 +1,14 @@
 var orm = require("../config/orm.js");
 
 var user = {
-  selectUserWhere: function (cols, vals, cb) {
-    orm.selectUserWhere("users", cols, vals, function(err, rows){
+  selectWhere: function (cols, vals, cb) {
+    orm.selectWhere("users", cols, vals, function(err, rows){
       cb(err, rows)
     })
   },
   // The variables cols and vals are arrays.
-  createUser: function (cols_vals, cb) {
-    orm.createUser("users", cols_vals, function(err, rows){
+  create: function (cols_vals, cb) {
+    orm.create("users", cols_vals, function(err, rows){
       cb(err, rows)
     })
   }

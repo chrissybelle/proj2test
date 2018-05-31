@@ -25,14 +25,9 @@ app.use(passport.session());
 // var routes = require("./controllers/placessController.js");
 // app.use(routes);
 
-
-// var routes = require("./controllers/usersController.js");
-// app.use(routes);
-
-
-
 require("./routes/html-routes.js")(app);
 require("./routes/api-routes.js")(app);
+require("./controllers/placesController.js")(app);
 
 
 app.listen(PORT, function() {

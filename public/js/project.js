@@ -437,9 +437,9 @@ function initMap() {
                         $(information).append("<p>Rating: " + groups[i].venue.rating + "</p>");
                     }
 
-                    if (groups[i].tips[0].text != undefined) {
-                        $(information).append("<p>Top Review: " + groups[i].tips[0].text + "</p>");
-                    }
+                    // if (groups[i].tips[0].text != undefined) {
+                    //     $(information).append("<p>Top Review: " + groups[i].tips[0].text + "</p>");
+                    // }
 
                     $(information).append("<p><strong>Map Label: " + labels[i] + "<strong></p>");
 
@@ -620,3 +620,4 @@ function createMarker(place) {
         infowindow.open(map, this);
     });
 }
+

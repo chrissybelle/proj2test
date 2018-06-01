@@ -1,5 +1,17 @@
 var connection = require("./connection.js");
 
+//helper function for "createPlacesWhere" query
+function printQuestionMarks(num) {
+  var arr = [];
+
+  for (var i = 0; i < num; i++) {
+    arr.push("?");
+  }
+
+  return arr.toString();
+}
+
+
 var orm = {
   selectWhere: function (tableInput, colToSearch, valOfCol, cb) {
     var queryString = "SELECT * FROM ?? WHERE ?? = ?";
@@ -8,14 +20,40 @@ var orm = {
       cb(err, result)
     });
   },
+
   create: function (tableInput, cols_vals, cb) {
     var queryString = "INSERT INTO ?? set ?";
     connection.query(queryString, [tableInput, cols_vals], function (err, result) {
       if (err) throw err;
       cb(err, result)
     });
-  }
-}
+  },
+
+  //INSERT INTO places_of_interest (col1, col2, col3...) VALUES (val1, val2, val3...)
+  createPlacesWhere: function(table, cols, vals, cb) {
+    var queryString = "INSERT INTO " + table;
+    queryString += " (";
+    queryString += cols.toString();
+    queryString += ") ";
+    queryString += "VALUES (";
+    queryString += printQuestionMarks(vals.length);
+    queryString += ") ";
+    console.log(queryString);
+
+    connection.query(queryString, vals, function(err, result) {
+      if (err) {
+        throw err;
+      }
+      cb(result);
+    });
+  },
+
+  // pull saved places list
+  // "SELECT * FROM places_of_interest RIGHT JOIN users ON users.username = places_of_interest.user_id WHERE (place_of_interest.city = ? AND users.username = ?"
+
+
+
+};
 
 
 // var orm = {

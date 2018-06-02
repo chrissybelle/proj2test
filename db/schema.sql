@@ -1,3 +1,4 @@
+DROP DATABASE IF EXISTS myperfecthotel_db;
 CREATE DATABASE myperfecthotel_db;
 USE myperfecthotel_db;
 

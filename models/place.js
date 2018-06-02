@@ -13,7 +13,7 @@ var place = {
     //pull list
     //****** */
     // selectPlacesWhere: function(cb) {
-    //     orm.selectPlacesWhere(cols, "users", "places_of_interest", "users.username", "places_of_interest.user_id", "places_of_interest.city = 'jerseycity'", "users.username = 'cbelle'", function(res) {
+    //     orm.selectPlacesWhere(cols, "users", "places_of_interest", "users.username", "places_of_interest.username", "places_of_interest.city = 'jerseycity'", "users.username = 'cbelle'", function(res) {
     //         cb(res);
     //     });
     // }

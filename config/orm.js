@@ -49,7 +49,7 @@ var orm = {
       if (err) {
         throw err;
       }
-      console.log(result)
+      console.log(result);
       cb(result);
     });
   },
@@ -66,23 +66,33 @@ var orm = {
   // RIGHT JOIN places_of_interest
   // ON users.username = places_of_interest.user_id
   // WHERE (places_of_interest.city = "city1"  AND users.username = "abc");
-selectPlacesWhere: function(cols, table1, table2, match1, match2, condition1, condition2) {
-  var queryString = "SELECT " + cols.toString();
-  queryString += " FROM " + table1;
-  queryString += " RIGHT JOIN " + table2;
-  queryString += " ON " + match1 + " = " + match2;
-  queryString += " WHERE " + condition1;
-  queryString += " AND " + condition2;
-  console.log(queryString);
 
-  connection.query(QueryString, vals, function(err, result) {
-    if (err) {
-      throw err;
-    }
-    cb(result);
-    });
-  }
+  //********* */
+// selectPlacesWhere: function(cols, table1, table2, match1, match2, condition1, condition2) {
+//   var queryString = "SELECT " + cols.toString();
+//   queryString += " FROM " + table1;
+//   queryString += " RIGHT JOIN " + table2;
+//   queryString += " ON " + match1 + " = " + match2;
+//   queryString += " WHERE " + condition1;
+//   queryString += " AND " + condition2;
+//   console.log(queryString);
 
+//   connection.query(queryString, vals, function(err, result) {
+//     if (err) {
+//       throw err;
+//     }
+//     cb(result);
+//     });
+//   }
+selectPlacesWhere: function(table, cb) {
+ var queryString = "SELECT * FROM " + table + ";";
+ connection.query(queryString, function(err, result) {
+   if (err) {
+     throw err;
+   }
+   cb(result);
+ });
+}
 
 };
 

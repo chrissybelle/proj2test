@@ -15,10 +15,7 @@ var isAuthenticated = function (req, res, next){
 module.exports = function(app) {
 
   app.get("/", function(req, res) {
-    // If the user already has an account send them to the members page
-    if (req.user) {
-      res.render("/members");
-    }
+    // take the user to them to the main page
     res.sendFile(path.join(__dirname, "../public/members.html"));
   });
 
@@ -27,13 +24,24 @@ module.exports = function(app) {
     if (req.user) {
       res.render("/members");
     }
+    //otherwise, send them to the login page
     res.sendFile(path.join(__dirname, "../public/login.html"));
   });
 
   // Here we've add our isAuthenticated middleware to this route.
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
   app.get("/members", isAuthenticated, function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/members.html"));
+    // if (req.user) {
+    //   res.render("/members");
+    // }
+    res.sendFile(path.join(__dirname, "../public/savedPlaces.html"));
+  });
+
+  app.get("/savedPlaces", isAuthenticated, function(req, res) {
+    // if (req.user) {
+    //   res.render("/members");
+    // }
+    res.sendFile(path.join(__dirname, "../public/savedPlaces.html"));
   });
 
 };

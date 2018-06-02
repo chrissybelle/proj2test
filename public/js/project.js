@@ -433,7 +433,7 @@ function initMap() {
 
 
                         var checkboxOne = $("<label>")
-                        checkboxOne.html("<input type='checkbox' value=" + i + ">Select to save place")
+                        checkboxOne.html("<input type='checkbox' class = 'checkboxSavePlace' name='" + categoriesName[q] + "'" + " value=" + i + ">Select to save place")
 
                         checkbox.append(checkboxOne)
                         information.append(checkbox)
@@ -478,34 +478,51 @@ function initMap() {
 
                 $("#results").append(button);
 
+                $("#results").on("click", '#saveLocation', function (event) {
+                    // Make sure to preventDefault on a submit event.
+                    event.preventDefault();
+                    console.log(groups)
+                    var savedPlaces = [];
+                    var category = [];
+
+    
+                    $(".checkboxSavePlace:checked").each(function () {
+                        savedPlaces.push($(this).val());
+                        category.push($(this).attr("name"));
+
+                    })
+    
+                    for (var r = 0; r < savedPlaces.length; r++) {
+                        
+                        var place = parseInt(savedPlaces[r])
+    
+                        var newLocation = {
+                            city: groups[place].venue.location.city,
+                            state: groups[place].venue.location.state,
+                            country: groups[place].venue.location.country,
+                            lat: groups[place].venue.location.lat,
+                            lng: groups[place].venue.location.lng,
+                            category: category[r],
+                            recommendation: groups[place].venue.name
+                        };
+    
+                        // Send the POST request.
+                        $.ajax("saved_locations", {
+                            type: "POST",
+                            data: newLocation
+                        }).then(
+                            function () {
+                                console.log("created new cat");
+                                // Reload the page to get the updated list
+                                location.reload();
+                            }
+                        );
+                    }
+                });
+
             })
 
-            $("#saveLocation").on("click", function (event) {
-                // Make sure to preventDefault on a submit event.
-                event.preventDefault();
-
-                // var newLocation = {
-                //     city: hhh,
-                //     state:
-                //     country:
-                //     lat:
-                //     lng:
-                //     category:
-                //     recommendation:
-                // };
-
-                // Send the POST request.
-                $.ajax("/api/places_of_interest", {
-                    type: "POST",
-                    data: newLocation
-                }).then(
-                    function () {
-                        console.log("created new cat");
-                        // Reload the page to get the updated list
-                        location.reload();
-                    }
-                );
-            });
+            
 
         })
 

@@ -11,12 +11,18 @@ var place = {
     },
 
     //pull list
-    selectPlacesWhere: function() {
-        orm.selectPlacesWhere(cols, "users", "places_of_interest", "users.username", "places_of_interest.user_id", condition1, condition2, function(res) {
+    //****** */
+    // selectPlacesWhere: function(cb) {
+    //     orm.selectPlacesWhere(cols, "users", "places_of_interest", "users.username", "places_of_interest.user_id", "places_of_interest.city = 'jerseycity'", "users.username = 'cbelle'", function(res) {
+    //         cb(res);
+    //     });
+    // }
+    selectPlacesWhere: function(cb) {
+        console.log("test");
+        orm.selectPlacesWhere("places_of_interest", function(res) {
             cb(res);
         });
     }
-
     //delete place from list
 
 

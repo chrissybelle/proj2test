@@ -507,7 +507,7 @@ function initMap() {
                         };
     
                         // Send the POST request.
-                        $.ajax("saved_locations", {
+                        $.ajax("/api/places_of_interest", {
                             type: "POST",
                             data: newLocation
                         }).then(

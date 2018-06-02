@@ -460,27 +460,6 @@ function initMap() {
                         categ.append(square)
                         $("#results").append(categ)
 
-                        //New part ends here
-
-
-                        // var price = groups[i].venue.price.tier
-                        // if (price == 1) {
-                        //     $("#rec-"+ i).append("<p> $ </p>");
-                        // }
-                        // else if (price == 2) {
-                        //     $("#rec-"+ i).append("<p> $$ </p>");
-                        // }
-                        // else if (price == 3) {
-                        //     $("#rec-"+ i).append("<p> $$$ </p>");
-                        // }
-                        // else if (price == 4) {
-                        //     $("#rec-"+ i).append("<p> $$$$ </p>");
-                        // }
-                        // else if (price == 5) {
-                        //     $("#rec-"+ i).append("<p> $$$$$ </p>");
-                        // } else {
-                        //     console.log("undefined");
-                        // // }
                     };
 
                     $("#results").append(newRow);
@@ -490,12 +469,47 @@ function initMap() {
                     }
                 }
 
+                var button = $("<button>");
+                button.addClass("btn btn-default");
+                button.attr("id", "saveLocation")
+                button.attr("type", "button");
+                button.text(" Save Locations")
+
+
+                $("#results").append(button);
 
             })
+
+            $("#saveLocation").on("click", function (event) {
+                // Make sure to preventDefault on a submit event.
+                event.preventDefault();
+
+                // var newLocation = {
+                //     city: hhh,
+                //     state:
+                //     country:
+                //     lat:
+                //     lng:
+                //     category:
+                //     recommendation:
+                // };
+
+                // Send the POST request.
+                $.ajax("/api/places_of_interest", {
+                    type: "POST",
+                    data: newLocation
+                }).then(
+                    function () {
+                        console.log("created new cat");
+                        // Reload the page to get the updated list
+                        location.reload();
+                    }
+                );
+            });
+
         })
 
 
-        //  difference stops here
     });
 
 }

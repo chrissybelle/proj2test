@@ -1,281 +1,96 @@
-<header id="masthead">
+{{!-- <header id="masthead">
     <div class="container">
       <nav>
         <a href="/login">Login</a>
-        <a href="/signup">Create</a>
+        <a href="/">Create</a>
         <a href="/mypage">My Page</a>
         
       </nav>
     </div>
   </header>
+<h1>My Travel List</h1>
+
+<ul>
+  {{#each places_of_interest}}
+    <li>
+      <p>
+        {{this.id}}. {{this.city}},{{this.state}}.{{recommendation}}
+
+        <button data-placeid="{{this.id}}" class="delplace">Delete</button>
+      </p>
+    </li>
+  {{/each}}
+</ul> --}}
+
+<h1>Places Pull</h1>
+
+<p>Manage quotes with this app</p>
+
+<!-- Pass in data from server.js -->
+<ul>
+  {{#each places_of_interest}}
+  	<li class="city">
+  		<p><span class="label">ID:</span> {{this.id}}</p>
+      <p><span class="label">Quote:</span> {{this.user_id}}</p>
+      <p><span class="label">Author:</span> {{this.city}}</p>
+
+      <button data-id="{{this.id}}" class="delquote">Delete</button>
+
+      <a href="/{{this.id}}">Update this quote</a>
+  	</li>
+  {{/each}}
+</ul>
+
+
 <div class="row">
-        <div class="col-md-12">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h3 class="panel-title">Search by Location</h3>
-            </div>
-            <div class="panel-body">
-              <input id="locationSelected" type="text" class="form-control spacing" placeholder="Times Square; New York, NY; 10023" aria-describedby="basic-addon1">
-
-              <button type="button" class="btn btn-default" id="location">
-                <span class="glyphicon glyphicon-search"></span> Search</button>
-
-              <div class="row spacing">
-                <label for="name"></label>
-                <div>
-                  <div id="audio">
-                    <audio id="myAudio" controls>
-                      <source src="assets/music/race.mp3" type="audio/mpeg"> Your browser does not support the audio element.</source>
-                    </audio>
-                  </div>
-                  <div>
-                    <button class="btn btn-default " onclick="enableLoop()" type="button">Enable loop</button>
-                    <button class="btn btn-default " onclick="disableLoop()" type="button">Disable loop</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+    <form class="col m12">
+        {{!-- display All Favorites --}}
+        <div class="col l6 form-group">
+            <ul> 
+                {{#each cities}}
+                    {{#unless selectCity}}
+                        <div class="collection">
+                            <span class="collection-item">{{city}}. {{country}}. {{category}}. {{recommendation}} </span> 
+                        </div> 
+                    {{/unless}}
+                {{/each}}
+            </ul>
         </div>
-
-
-      </div>
-
-      <div class="row">
-        <div class="col-md-6" id="mapHolder">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h3 class="panel-title">Your Results on Google Maps</h3>
-            </div>
-            <div id="map">
-            </div>
-          </div>
+        {{!-- Selected City --}}
+        <div class="col m6 form-group">
+            <ul>
+                {{#each cities}}
+                    {{#if selectCity}}
+                        <div class="collection">
+                            <div class="collection-item">
+                               <span>{{city}}. {{country}}. {{category}}. {{recommendation}} </span>
+                            </div>
+                        </div>                     
+                    {{/if}}
+                {{/each}}
+            </ul> 
         </div>
+    </form>
+</div>
+   
+{{!-- adding a city --}}
+<script>
+    $(document).ready(function(){
+       $(document).on('click',"#devoure",function(){
+           console.log(this.value);
+           var row = parseInt(this.value);
+           $.post("/api/places_of_interest",{row},function(data,status){
+                console.log('successful add' + data + status);
+            })
+       }) 
+    //add a city 
+     $(document).on('click',"#add",function(){
+        var val =  $('#cityName').val().trim();
+           console.log(val);
+           $.post("/api/places_of_interest",{val},function(data,status){
+                console.log('successful add!' + data + status);
+            })
+       }) 
+    });
+</script>
 
-
-        <div class="col-md-6" id="whatToDo">
-          <div class="panel panel-default">
-            <div class="panel-heading" id="test">
-              <h3 class="panel-title">What Do You Want To Do?</h3>
-            </div>
-            <div class="panel-body" id="user-selection">
-              <div class="checkbox">
-                <label>
-                  <input class="check" type="checkbox" value="4d4b7104d754a06370d81259">Arts and Entertainment</label>
-              </div>
-              <div class="checkbox">
-                <label>
-                  <input class="check" type="checkbox" value="4d4b7105d754a06372d81259">College and University</label>
-              </div>
-              <div class="checkbox">
-                <label>
-                  <input class="check" type="checkbox" value="4d4b7105d754a06373d81259">Event</label>
-              </div>
-              <div class="checkbox">
-                <label>
-                  <input class="check" type="checkbox" value="4d4b7105d754a06374d81259">Food</label>
-              </div>
-              <div class="checkbox">
-                <label>
-                  <input class="check" type="checkbox" value="4d4b7105d754a06376d81259">Nightlife Spot</label>
-              </div>
-              <div class="checkbox">
-                <label>
-                  <input class="check" type="checkbox" value="4d4b7105d754a06377d81259">Outdoors and Recreation</label>
-              </div>
-              <div class="checkbox">
-                <label>
-                  <input class="check" type="checkbox" value="4d4b7105d754a06378d81259">Shop and Service</label>
-              </div>
-              <div class="checkbox">
-              </div>
-              <button type="button" class="btn btn-default" id="recSearch">
-                <span class="glyphicon glyphicon-search"></span> Search
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-12 hidden" id="recommend">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h3 class="panel-title">Top Recommendations Near You</h3>
-            </div>
-            <div class="panel-body" id="rec-section">
-              <div class="row">
-                <div class="col-xs-6 col-md-3">
-                  <div class="thumbnail" id="rec-0">
-
-                  </div>
-                </div>
-                <div class="col-xs-6 col-md-3">
-                  <div class="thumbnail" id="rec-1">
-
-                  </div>
-                </div>
-                <div class="col-xs-6 col-md-3">
-                  <div class="thumbnail" id="rec-2">
-
-                  </div>
-                </div>
-                <div class="col-xs-6 col-md-3">
-                  <div class="thumbnail" id="rec-3">
-
-                  </div>
-                </div>
-                <div class="col-xs-6 col-md-3">
-                  <div class="thumbnail" id="rec-4">
-
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <footer>
-      <div class="container">
-
-        <form action="/" method="POST">
-	<textarea type="text" name="task"></textarea>
-
-	<button type="submit">Save</button>
-</form>
-  <footer>
-        &copy Copyright 2018 Gabi Nicole Jocelyn Cbelle
-    </footer>
-
-<style media="screen">
-#white{
-    color:#efeee7;
-  }
-  .collapse.collapse.navbar-collapse{ 
-    font-size: 18px;
-    margin-top: 30px;
-    margin-right: 100px
-  }
-  
-  .page-header {
-    padding: 1px;
-    margin: 40px 0 20px;
-    border-bottom: 1px solid #eee;
-    background: white;
-    opacity: 0.4;
-  }
-
-  h1{
-    color: black;
-    font-weight: 600;
-    padding-bottom: 20px;
-    line-height: 49px;
-    font-size: 80px;
-    font-family: 'Courgette', cursive;
-    text-align: center;
-  } 
-
-  h2{
-    color: black;
-    font-weight: 600;
-    padding-bottom: 20px;
-    line-height: 49px;
-    font-size: 60px;
-    font-family: 'Dancing Script', cursive;
-    text-align: center;
-  } 
-
-  .panel-title {
-    font-size: 30px;
-    font-family: 'Playfair Display SC', serif;
-  }
-
-  .check {
-    font-family: 'Barlow', sans-serif;
-  }
-  
-#whatToDo,
-#mapHolder {
- /* background-color: rgb(186,211,194); */
- color: black;
- font-size: 25px;
- padding: 15px;
-}
-
-#recommend {
-  text-align: center;
-}
-
-  .col-md-4 {
-    text-align: center;
-    }
-  #twitter1{
-    width: 70px;
-  }
-  footer {
-    clear: both;
-    padding: 21px 0;
-    font-size: 12px;
-    color: black;
-    text-align: center;
-    background: white;
-    opacity: 0.8;
-    /* border-top: 8px solid #4aaaa5; */
-    height: 50px;
-    margin-top: 50px;
-  }
-  
-
-  #map {
-    height: 358px;
-    width: 100%;
-  }
-
-  #rec-section {
-    align-items: center;
-  }
-  
-  .spacing{
-    margin: 5px 0px;
-  }
-
-  .panel-default>.panel-heading {
-    background: rgb(186,211,194);
-    border-color: rgb(186,211,194);
-  }
-
-  .btn-default {
-    color: #333;
-    background-color: rgb(186,211,194);
-    border-color: rgb(186,211,194);
-  }
-
-  .panel-body {
-    background: rgb(235,227,206);
-  }
-
-  #audio{
-    float: left;
-    margin-right: 10px;
-    padding-top: 0px;
-  }
-
-  .hidden{ 
-    display: none; 
-}
-
-  li {
-    height : 100px;
-    width: 100px;
-    color: red;
-    background-color: purple;
-    margin-bottom: 30px;
-  }
-</style>
-
-
-
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script type="text/javascript" src="js/project.js"></script>

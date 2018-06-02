@@ -13,6 +13,7 @@ function printQuestionMarks(num) {
 
 
 var orm = {
+  // read users table
   selectWhere: function (tableInput, colToSearch, valOfCol, cb) {
     var queryString = "SELECT * FROM ?? WHERE ?? = ?";
     connection.query(queryString, [tableInput, colToSearch, valOfCol], function (err, result) {
@@ -21,6 +22,7 @@ var orm = {
     });
   },
 
+  // create new user
   create: function (tableInput, cols_vals, cb) {
     var queryString = "INSERT INTO ?? set ?";
     connection.query(queryString, [tableInput, cols_vals], function (err, result) {
@@ -29,8 +31,11 @@ var orm = {
     });
   },
 
-  //INSERT INTO places_of_interest (col1, col2, col3...) VALUES (val1, val2, val3...)
+  // add place to saved list
+    //INSERT INTO places_of_interest (col1, col2, col3...) VALUES (val1, val2, val3...)
   createPlacesWhere: function(table, cols, vals, cb) {
+    // insert into places_of_interest (col1, col2, col3) values (?, ?, ?)
+
     var queryString = "INSERT INTO " + table;
     queryString += " (";
     queryString += cols.toString();
@@ -44,23 +49,39 @@ var orm = {
       if (err) {
         throw err;
       }
+      console.log(result)
       cb(result);
     });
   },
 
-  // pull saved places list
-//SELECT users.username as username,
-// places_of_interest.city as city,
-// places_of_interest.country as country,
-// places_of_interest.lat as lat,
-// places_of_interest.lng as lng,
-// places_of_interest.category as category,
-// places_of_interest.recommendation as recommendation
-// FROM users
-// RIGHT JOIN places_of_interest
-// ON users.username = places_of_interest.user_id
-// WHERE (places_of_interest.city = "city1"  AND users.username = "abc");
-// selectPlacesWhere: function()
+// pull saved places list
+  //SELECT users.username as username,
+  // places_of_interest.city as city,
+  // places_of_interest.country as country,
+  // places_of_interest.lat as lat,
+  // places_of_interest.lng as lng,
+  // places_of_interest.category as category,
+  // places_of_interest.recommendation as recommendation
+  // FROM users
+  // RIGHT JOIN places_of_interest
+  // ON users.username = places_of_interest.user_id
+  // WHERE (places_of_interest.city = "city1"  AND users.username = "abc");
+selectPlacesWhere: function(cols, table1, table2, match1, match2, condition1, condition2) {
+  var queryString = "SELECT " + cols.toString();
+  queryString += " FROM " + table1;
+  queryString += " RIGHT JOIN " + table2;
+  queryString += " ON " + match1 + " = " + match2;
+  queryString += " WHERE " + condition1;
+  queryString += " AND " + condition2;
+  console.log(queryString);
+
+  connection.query(QueryString, vals, function(err, result) {
+    if (err) {
+      throw err;
+    }
+    cb(result);
+    });
+  }
 
 
 };

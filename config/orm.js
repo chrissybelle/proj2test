@@ -60,7 +60,8 @@ var orm = {
 // RIGHT JOIN places_of_interest
 // ON users.username = places_of_interest.user_id
 // WHERE (places_of_interest.city = "city1"  AND users.username = "abc");
-selectPlacesWhere: function()
+// selectPlacesWhere: function()
+
 
 };
 

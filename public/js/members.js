@@ -4,4 +4,9 @@ $(document).ready(function() {
   $.get("/api/user_data").then(function(data) {
     $(".member-name").text(data.username);
   });
+
+  $(".submitList").on("click", "#submitBtn", function() {
+    event.preventDefault();
+    //takes data from selected items and stores to /api/savedPlaces
+  });
 });

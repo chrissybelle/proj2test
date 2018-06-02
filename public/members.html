@@ -24,13 +24,18 @@
 <body>
 
     <nav class="navbar navbar-default">
-        <div class="container-fluid">
+      <div class="container-fluid">
+        <div class="container">
           <div class="navbar-header">
-            <a class="navbar-brand" href="/logout">
-              Logout
-            </a>
+            <a class="navbar-brand" href="/logout">Logout</a>
           </div>
         </div>
+        <div class="container">
+          <!-- displays username - ******NEED TO FIX LAYOUT -->
+          <span class="navbar-text">Welcome <span class="member-name"></span></span>
+        </div>
+      </div>
+
       </nav>
 
   <div id="slideshow">
@@ -184,6 +189,7 @@
 
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIxGfQn0QePtVWkz6vFL31V-gi7hbKLnY&callback=initMap&libraries=places"
     async defer></script>
+    <script type="text/javascript" src="js/members.js"></script>
 
   <script>
     $(document).ready(function () {

@@ -15,7 +15,7 @@ var isAuthenticated = function (req, res, next){
 module.exports = function(app) {
 
   app.get("/", function(req, res) {
-    // take the user to them to the main page
+    // take the user to them to the main page 
     res.sendFile(path.join(__dirname, "../public/members.html"));
   });
 

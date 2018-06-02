@@ -133,7 +133,7 @@
                 </div>
 
 
-              <script>
+              <!-- <script>
                   $(document).ready(function(){
                      $(document).on('click',"#add",function(){
                          console.log(this.value);
@@ -145,13 +145,14 @@
                   //add a city 
                    $(document).on('click',"#add",function(){
                       var val =  $('#cityName').val().trim();
+                      var username = $(".member-name").val().trim();
                          console.log(val);
                          $.post("/api/places_of_interest",{val},function(data,status){
                               console.log('successful add!' + data + status);
                           })
                      }) 
                   });
-              </script>
+              </script> -->
 
             <div class="row">
                 <div class="col-md-6" id="mapHolder">
@@ -251,26 +252,17 @@
     <script type="text/javascript" src="js/members.js"></script>
 
 
-    <script>
+    <!-- <script>
         $(document).ready(function(){
-           $(document).on('click',"#add",function(){
-               console.log("test");
-               console.log(this.value);
-               var row = $(this).val();
-               $.get("/api/places_of_interest",function(data,status){
+            var username = $(".member-name").val().trim();
+            console.log(username);
+               $.post("/api/places_of_interest",function(data,status){
                     console.log('successful add' + data + status);
-                })
-           }) 
-        //add a city 
-         $(document).on('click',"#add",function(){
-            var val =  $('.cityName').val().trim();
-               console.log(val);
-               $.post("/api/places_of_interest",{val},function(data,status){
-                    console.log('successful add!' + data + status);
-                })
-           }) 
+                });
+           });
+
         });
-    </script>
+    </script> -->
 
     <script>
         $(document).ready(function () {

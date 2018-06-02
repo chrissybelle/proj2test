@@ -29,25 +29,26 @@ var place = require("../models/place");
 //     });
 
 //     // pull saved places list
-    // router.get("/api/places_of_interest", function (req, res) {
-    //     console.log("EUREKA");
-    //     place.selectPlacesWhere(function (data) {
-    //         var hbsObject = {
-    //             place: data
-    //         };
-    //         console.log(hbsObject);
-    //         res.render("index", hbsObject);
-    //     }
-    //     );
-    // });
+    router.get("/api/places_of_interest", function (req, res) {
+        console.log("EUREKA");
+        place.selectPlacesWhere(function (data) {
+            var hbsObject = {
+                place: data
+            };
+            console.log(hbsObject);
+            res.render("index", hbsObject);
+        }
+        );
+    });
 
 
     //add new place to list
     router.post("/api/places_of_interest", function (req, res) {
-        console.log("POSTED");        
+        console.log("POSTED");
+        console.log(req.user.username);       
         place.createPlacesWhere(
             ["user_id", "city", "state", "country", "lat", "lng", "category", "recommendation"],
-            [123, req.body.city, req.body.state, req.body.country, req.body.lat, req.body.lng, req.body.category, req.body.recommendation],
+            [req.user.username, req.body.city, req.body.state, req.body.country, req.body.lat, req.body.lng, req.body.category, req.body.recommendation],
             function (result) {
                 res.json({ id: result.insertId });
             }

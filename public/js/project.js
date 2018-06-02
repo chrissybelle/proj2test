@@ -494,9 +494,10 @@ function initMap() {
     
                     for (var r = 0; r < savedPlaces.length; r++) {
                         
-                        var place = parseInt(savedPlaces[r])
+                        var place = parseInt(savedPlaces[r]);
     
                         var newLocation = {
+                            // user_name: $(".member-name").val().trim(),
                             city: groups[place].venue.location.city,
                             state: groups[place].venue.location.state,
                             country: groups[place].venue.location.country,
@@ -505,7 +506,7 @@ function initMap() {
                             category: category[r],
                             recommendation: groups[place].venue.name
                         };
-    
+
                         // Send the POST request.
                         $.ajax("/api/places_of_interest", {
                             type: "POST",

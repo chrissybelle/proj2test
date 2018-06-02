@@ -10,7 +10,7 @@ CREATE TABLE users (
 
 CREATE TABLE places_of_interest (
     id int NOT NULL auto_increment,
-	user_id varchar(100) NOT NULL,
+	username varchar(255) NOT NULL,
 	city varchar(100) NOT NULL,
     state varchar(50) NOT NULL,
     country varchar(50) NOT NULL,

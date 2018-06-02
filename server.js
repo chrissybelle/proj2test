@@ -23,12 +23,11 @@ app.use(passport.session());
 
 // Import routes and give the server access 
 // var routes = require("./controllers/placesController.js");
-
 // app.use(routes);
 
 require("./routes/html-routes.js")(app);
 require("./routes/api-routes.js")(app);
-//require("./controllers/placesController.js")(app); //this code is causing an error....
+require("./controllers/placesController.js")(app);
 
 
 app.listen(PORT, function() {

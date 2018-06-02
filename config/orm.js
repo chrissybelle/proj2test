@@ -49,9 +49,18 @@ var orm = {
   },
 
   // pull saved places list
-  // "SELECT * FROM places_of_interest RIGHT JOIN users ON users.username = places_of_interest.user_id WHERE (place_of_interest.city = ? AND users.username = ?"
-
-
+//SELECT users.username as username,
+// places_of_interest.city as city,
+// places_of_interest.country as country,
+// places_of_interest.lat as lat,
+// places_of_interest.lng as lng,
+// places_of_interest.category as category,
+// places_of_interest.recommendation as recommendation
+// FROM users
+// RIGHT JOIN places_of_interest
+// ON users.username = places_of_interest.user_id
+// WHERE (places_of_interest.city = "city1"  AND users.username = "abc");
+selectPlacesWhere: function()
 
 };
 

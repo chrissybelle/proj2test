@@ -369,15 +369,18 @@ function initMap() {
 
         //Added this part to create the results squares depending on the number of selected variables
 
+
+
         $("#recSearch").on("click", function () {
             var categories = [];
+            var categoriesName = [];
 
             $(".check:checked").each(function () {
                 categories.push($(this).val());
+                categoriesName.push($(this).attr("name"));
             })
 
             var groups = [];
-
             var requests = [];
             var numChoices = $("#selectedNumber :selected").val();
             numChoices = parseInt(numChoices)
@@ -385,6 +388,7 @@ function initMap() {
             for (var g = 0; g < categories.length; g++) {
 
                 var _queryURL = queryURL + categories[g]
+                console.log(_queryURL)
 
                 requests.push(
                     $.ajax({
@@ -405,80 +409,94 @@ function initMap() {
                 console.log(groups)
                 $("#recommend").removeClass("hidden")
 
-                for (var i = 0; i < groups.length; i++) {
-                    var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+                for (var q = 0; q < categories.length; q++) {
 
-                    var square = $("<div>");
-                    square.addClass("col-xs-6 col-md-4");
+                    var categ = $("<div>");
+                    categ.addClass("category");
+                    categ.html("<div><p>" + categoriesName[q] + "</p></div>");
+                    var newRow = $("<div>");
+                    newRow.addClass("row")
 
-                    var information = $("<div>");
-                    information.addClass("thumbnail");
-                    information.attr('id', "rec-" + i);
+                    for (var i = numChoices * q; i < numChoices * (q + 1); i++) {
 
-                    var checkbox = $("<div>")
-                    checkbox.addClass("checkbox")
+                        var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+
+                        var square = $("<div>");
+                        square.addClass("col-xs-6 col-md-4");
+
+                        var information = $("<div>");
+                        information.addClass("thumbnail");
+                        information.attr('id', "rec-" + i);
+
+                        var checkbox = $("<div>")
+                        checkbox.addClass("checkbox")
 
 
-                    var checkboxOne = $("<label>")
-                    checkboxOne.html("<input type='checkbox' value=" + i + ">Select to save place")
+                        var checkboxOne = $("<label>")
+                        checkboxOne.html("<input type='checkbox' value=" + i + ">Select to save place")
 
-                    checkbox.append(checkboxOne)
-                    information.append(checkbox)
+                        checkbox.append(checkboxOne)
+                        information.append(checkbox)
 
-                    if (groups[i].venue.url != undefined) {
-                        var url = groups[i].venue.url
-                        $(information).append("<a href=" + url + " target=_blank>" + groups[i].venue.name + "<a>");
+                        if (groups[i].venue.url != undefined) {
+                            var url = groups[i].venue.url
+                            $(information).append("<a href=" + url + " target=_blank>" + groups[i].venue.name + "<a>");
+                        }
+                        else {
+                            $(information).append("<p><strong>" + groups[i].venue.name + "</strong></p>");
+                        }
+
+                        if (groups[i].venue.rating != undefined) {
+                            $(information).append("<p>Rating: " + groups[i].venue.rating + "</p>");
+                        }
+
+                        // if (groups[i].tips[0].text != undefined) {
+                        //     $(information).append("<p>Top Review: " + groups[i].tips[0].text + "</p>");
+                        // }
+
+                        $(information).append("<p><strong>Map Label: " + labels[i] + "<strong></p>");
+
+                        square.append(information);
+                        categ.append(square)
+                        $("#results").append(categ)
+
+                        //New part ends here
+
+
+                        // var price = groups[i].venue.price.tier
+                        // if (price == 1) {
+                        //     $("#rec-"+ i).append("<p> $ </p>");
+                        // }
+                        // else if (price == 2) {
+                        //     $("#rec-"+ i).append("<p> $$ </p>");
+                        // }
+                        // else if (price == 3) {
+                        //     $("#rec-"+ i).append("<p> $$$ </p>");
+                        // }
+                        // else if (price == 4) {
+                        //     $("#rec-"+ i).append("<p> $$$$ </p>");
+                        // }
+                        // else if (price == 5) {
+                        //     $("#rec-"+ i).append("<p> $$$$$ </p>");
+                        // } else {
+                        //     console.log("undefined");
+                        // // }
+                    };
+
+                    $("#results").append(newRow);
+
+                    for (j = 0; j < groups.length; j++) {
+                        createMarkerFourSquare(groups[j].venue, j)
                     }
-                    else {
-                        $(information).append("<p><strong>" + groups[i].venue.name + "</strong></p>");
-                    }
-
-                    if (groups[i].venue.rating != undefined) {
-                        $(information).append("<p>Rating: " + groups[i].venue.rating + "</p>");
-                    }
-
-                    // if (groups[i].tips[0].text != undefined) {
-                    //     $(information).append("<p>Top Review: " + groups[i].tips[0].text + "</p>");
-                    // }
-
-                    $(information).append("<p><strong>Map Label: " + labels[i] + "<strong></p>");
-
-                    square.append(information);
-                    $("#results").append(square)
-
-                    //New part ends here
-
-
-                    // var price = groups[i].venue.price.tier
-                    // if (price == 1) {
-                    //     $("#rec-"+ i).append("<p> $ </p>");
-                    // }
-                    // else if (price == 2) {
-                    //     $("#rec-"+ i).append("<p> $$ </p>");
-                    // }
-                    // else if (price == 3) {
-                    //     $("#rec-"+ i).append("<p> $$$ </p>");
-                    // }
-                    // else if (price == 4) {
-                    //     $("#rec-"+ i).append("<p> $$$$ </p>");
-                    // }
-                    // else if (price == 5) {
-                    //     $("#rec-"+ i).append("<p> $$$$$ </p>");
-                    // } else {
-                    //     console.log("undefined");
-                    // // }
-                };
-
-                for (j = 0; j < groups.length; j++) {
-                    createMarkerFourSquare(groups[j].venue, j)
                 }
+
 
             })
         })
-            
 
-//  difference stops here
-});
+
+        //  difference stops here
+    });
 
 }
 
@@ -568,7 +586,7 @@ function createMarkerFourSquare(venue, j) {
 
 //add markers in the map
 function createMarker(place) {
-    var icons = "assets/images/hotel-icon.png"
+    var icons = "assets/img/hotel-icon.png"
 
     var placeLoc = place.geometry.location;
     var marker = new google.maps.Marker({

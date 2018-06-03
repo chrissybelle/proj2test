@@ -4,6 +4,7 @@ var orm = require("../config/orm.js");
 var place = {
     //add new place to list
     createPlacesWhere: function(cols, vals, cb) {
+        console.log("MODEL WORKING");
         orm.createPlacesWhere("places_of_interest", cols, vals, function(res) {
             cb(res);
             

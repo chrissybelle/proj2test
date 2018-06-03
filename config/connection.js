@@ -11,7 +11,7 @@ if (process.env.JAWSDB_URL) {
     host: "localhost",
     user: "root",
     password: "password",
-    database: "myperfecthotel_db"
+    database: "myperfecthotel_db" //boaq6xfkfahie6ap
   });
 };
 

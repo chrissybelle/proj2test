@@ -46,9 +46,11 @@ var orm = {
     console.log(queryString);
 
     connection.query(queryString, vals, function(err, result) {
+      console.log(vals);
       if (err) {
         throw err;
       }
+      console.log("ORM WORKING");
       console.log(result);
       cb(result);
     });

@@ -1,4 +1,3 @@
-DROP DATABASE IF EXISTS myperfecthotel_db;
 CREATE DATABASE myperfecthotel_db;
 USE myperfecthotel_db;
 
@@ -11,7 +10,7 @@ CREATE TABLE users (
 
 CREATE TABLE places_of_interest (
     id int NOT NULL auto_increment,
-	username varchar(255) NOT NULL,
+	user varchar(255) NOT NULL,
 	city varchar(100) NOT NULL,
     state varchar(50) NOT NULL,
     country varchar(50) NOT NULL,

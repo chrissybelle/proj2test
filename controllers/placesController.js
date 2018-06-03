@@ -44,10 +44,9 @@ var place = require("../models/place");
 
     //add new place to list
     router.post("/api/places_of_interest", function (req, res) {
-        console.log("POSTED");
-        console.log(req.user.username);       
+        console.log("CONTROLLER WORKING " + req.user.username);       
         place.createPlacesWhere(
-            ["user_id", "city", "state", "country", "lat", "lng", "category", "recommendation"],
+            ["user", "city", "state", "country", "lat", "lng", "category", "recommendation"],
             [req.user.username, req.body.city, req.body.state, req.body.country, req.body.lat, req.body.lng, req.body.category, req.body.recommendation],
             function (result) {
                 res.json({ id: result.insertId });

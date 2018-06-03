@@ -497,7 +497,6 @@ function initMap() {
                         var place = parseInt(savedPlaces[r]);
     
                         var newLocation = {
-                            // user_name: $(".member-name").val().trim(),
                             city: groups[place].venue.location.city,
                             state: groups[place].venue.location.state,
                             country: groups[place].venue.location.country,
@@ -513,7 +512,7 @@ function initMap() {
                             data: newLocation
                         }).then(
                             function () {
-                                console.log("created new cat");
+                                console.log("created new place");
                                 // Reload the page to get the updated list
                                 location.reload();
                             }

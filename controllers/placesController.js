@@ -45,13 +45,14 @@ var place = require("../models/place");
     // pull saved places list
     router.get("/api/places_of_interest", function (req, res) {
         console.log("GET - CONTROLLER WORKING");
+        console.log(req.body);
         var user = req.user.username;
         var city = "new york"; //hardcoded to test, need to pull value from selection
         place.selectPlacesWhere(user, city, function(data) {
             var hbsObject = {
                 place: data
             };
-            console.log(hbsObject);
+            // console.log(hbsObject);
             res.render("index", hbsObject);
             console.log("GET request DONE");
         }

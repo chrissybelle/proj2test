@@ -62,7 +62,7 @@
             </div>
 
 
-
+<!-- DROPDOWN MENU FOR SAVED LISTS -->
             <form>
                 <select id="savedList">
                   <option class="location">New York</option>
@@ -72,28 +72,15 @@
                 </select>
                 <input id="submitPlace" type="submit" value="Submit">
               </form>
-              <!-- <button id="addPlace" class="cityName" value="newyork">New York</button> -->
+
+<!-- DISPLAY SAVED LISTS HERE -->
+<div class="savedListsDiv">
+
+</div>
 
 
-            <!-- <div class="row">
-                <div class="col-md-12">
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-default">My Favorites</button>
-                        <button type="button" class="btn btn-default 
-                        down-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <span class="caret"></span>
-                          <span class="sr-only">Toggle Dropdown</span>
-                        </button>
-                        <ul class="dropdown-menu">
-                          <li class="cityName">New York</li>
-                          <li class="cityName">LA</li>
-                          <li class="cityName">Miami</li>
-                        </ul>
-                        <button id="add">Add</button>
-                      </div>
-                </div>
-            </div> -->
 
+<!-- SEARCH LOCATION  -->
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel panel-default">
@@ -125,27 +112,6 @@
                 </div>
 
 
-              <!-- <script>
-                  $(document).ready(function(){
-                     $(document).on('click',"#add",function(){
-                         console.log(this.value);
-                         var row = parseInt(this.value);
-                         $.post("/api/places_of_interest",{row},function(data,status){
-                              console.log('successful add' + data + status);
-                          })
-                     }) 
-                  //add a city 
-                   $(document).on('click',"#add",function(){
-                      var val =  $('#cityName').val().trim();
-                      var username = $(".member-name").val().trim();
-                         console.log(val);
-                         $.post("/api/places_of_interest",{val},function(data,status){
-                              console.log('successful add!' + data + status);
-                          })
-                     }) 
-                  });
-              </script> -->
-
             <div class="row">
                 <div class="col-md-6" id="mapHolder">
                     <div class="panel panel-default">
@@ -157,7 +123,7 @@
                     </div>
                 </div>
 
-
+<!-- SELECT CATEGORY -->
                 <div class="col-md-6" id="whatToDo">
                     <div class="panel panel-default">
                         <div class="panel-heading" id="test">
@@ -213,6 +179,7 @@
                 </div>
             </div>
 
+<!-- TOP RECOMMENDATIONS -->
             <div class="row">
                 <div class="col-md-12 hidden" id="recommend">
                     <div class="panel panel-default">
@@ -232,7 +199,7 @@
     </div>
 
 
-
+<!-- MODAL TO CONFIRM PLACE HAS BEEN SAVED TO LIST -->
     <div id="feedbackModal" class="modal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -268,17 +235,6 @@
     <script type="text/javascript" src="js/members.js"></script>
 
 
-    <!-- <script>
-        $(document).ready(function(){
-            var username = $(".member-name").val().trim();
-            console.log(username);
-               $.post("/api/places_of_interest",function(data,status){
-                    console.log('successful add' + data + status);
-                });
-           });
-
-        });
-    </script> -->
 
     <script>
         $(document).ready(function () {
@@ -292,8 +248,10 @@
         });
     </script>
 
-
+<!-- I THINK WE CAN REMOVE THIS? -->
     <script type="text/javascript" src="js/savedPlaces.js"></script>
+
+
 </body>
 
 </html>

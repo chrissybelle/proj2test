@@ -53,6 +53,7 @@ var place = require("../models/place");
             };
             console.log(hbsObject);
             res.render("index", hbsObject);
+            console.log("GET request DONE");
         }
         );
     });

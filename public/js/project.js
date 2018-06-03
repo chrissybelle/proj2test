@@ -512,9 +512,13 @@ function initMap() {
                             data: newLocation
                         }).then(
                             function () {
+                                $('#feedbackModal').modal('show')
                                 console.log("created new place");
                                 // Reload the page to get the updated list
-                                location.reload();
+                                $("#closeModal").on("click", function() {
+                                    location.reload();
+                                })
+
                             }
                         );
                     }

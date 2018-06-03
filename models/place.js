@@ -4,7 +4,7 @@ var orm = require("../config/orm.js");
 var place = {
     //add new place to list
     createPlacesWhere: function(cols, vals, cb) {
-        console.log("MODEL WORKING");
+        console.log("POST - MODEL WORKING");
         orm.createPlacesWhere("places_of_interest", cols, vals, function(res) {
             cb(res);
             
@@ -18,9 +18,15 @@ var place = {
     //         cb(res);
     //     });
     // }
-    selectPlacesWhere: function(cb) {
-        console.log("test");
-        orm.selectPlacesWhere("places_of_interest", function(res) {
+    selectPlacesWhere: function(user, city, cb) {
+        var findUser = "places_of_interest.user = ";
+        findUser += "'" + user + "'";
+
+        var findCity = "places_of_interest.city = ";
+        findCity += "'" + city + "'";
+
+        console.log("GET - MODEL WORKING");
+        orm.selectPlacesWhere("places_of_interest", findUser, findCity, function(res) {
             cb(res);
         });
     }

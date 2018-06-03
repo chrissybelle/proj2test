@@ -50,7 +50,7 @@ var orm = {
       if (err) {
         throw err;
       }
-      console.log("ORM WORKING");
+      console.log("POST - ORM WORKING");
       console.log(result);
       cb(result);
     });
@@ -86,13 +86,18 @@ var orm = {
 //     cb(result);
 //     });
 //   }
-selectPlacesWhere: function(table, cb) {
- var queryString = "SELECT * FROM " + table + ";";
+selectPlacesWhere: function(table, condition1, condition2, cb) {
+ var queryString = "SELECT * FROM " + table;
+ queryString += " WHERE " + condition1;
+ queryString += " AND " + condition2;
+ console.log(queryString);
  connection.query(queryString, function(err, result) {
    if (err) {
      throw err;
    }
+   console.log("GET - ORM WORKING");
    cb(result);
+   console.log(result);
  });
 }
 

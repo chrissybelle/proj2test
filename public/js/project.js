@@ -531,6 +531,21 @@ function initMap() {
 
 }
 
+// to pull saved list
+$("#submitPlace").on("click", function() {
+    var pullThisList = $(".location:checked").val();
+    $.ajax("/api/places_of_interest", {
+        type: "GET",
+        data: pullThisList
+    }).then(
+        function() {
+            console.log("pulled your list");
+            // Reload the page to get the updated list
+            location.reload();
+        })
+
+
+});
 
 //transform location into latlng
 function geocodeAddress(geocoder, resultsMap) {

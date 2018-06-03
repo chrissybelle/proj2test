@@ -28,10 +28,26 @@ var place = require("../models/place");
 //         );
 //     });
 
-//     // pull saved places list
+
+    //add new place to list
+    router.post("/api/places_of_interest", function (req, res) {
+        console.log("POST - CONTROLLER WORKING " + req.user.username);       
+        place.createPlacesWhere(
+            ["user", "city", "state", "country", "lat", "lng", "category", "recommendation"],
+            [req.user.username, req.body.city, req.body.state, req.body.country, req.body.lat, req.body.lng, req.body.category, req.body.recommendation],
+            function (result) {
+                res.json({ id: result.insertId });
+            }
+        );
+    });
+
+
+    // pull saved places list
     router.get("/api/places_of_interest", function (req, res) {
-        console.log("EUREKA");
-        place.selectPlacesWhere(function (data) {
+        console.log("GET - CONTROLLER WORKING");
+        var user = req.user.username;
+        var city = "new york"; //hardcoded to test, need to pull value from selection
+        place.selectPlacesWhere(user, city, function(data) {
             var hbsObject = {
                 place: data
             };
@@ -42,17 +58,6 @@ var place = require("../models/place");
     });
 
 
-    //add new place to list
-    router.post("/api/places_of_interest", function (req, res) {
-        console.log("CONTROLLER WORKING " + req.user.username);       
-        place.createPlacesWhere(
-            ["user", "city", "state", "country", "lat", "lng", "category", "recommendation"],
-            [req.user.username, req.body.city, req.body.state, req.body.country, req.body.lat, req.body.lng, req.body.category, req.body.recommendation],
-            function (result) {
-                res.json({ id: result.insertId });
-            }
-        );
-    });
   
     
     

@@ -101,21 +101,22 @@ selectPlacesWhere: function(table, condition1, condition2, cb) {
  });
 },
   // Update to table - adding an additional city or recommendation
-  updatePlacesWhere: function(table, objColVals, condition1, condition2, cb) {
+  updatePlacesWhere: function(table, condition1, cb) {
     var queryString = "UPDATE " + table;
 
     queryString += " SET ";
     queryString += objToSql(objColVals);
     queryString += " WHERE " + condition1;
-    queryString += " AND " + condition2;
+    // queryString += " AND " + condition2;
 
     console.log(queryString);
     connection.query(queryString, function(err, result) {
       if (err) {
         throw err;
       }
-
+      console.log("UPDATE - ORM WORKING");
       cb(result);
+      console.log(result);
     });
   },
   //Delete city or recommendation from list
@@ -129,7 +130,9 @@ selectPlacesWhere: function(table, condition1, condition2, cb) {
         throw err;
       }
 
+      console.log("DELETE - ORM WORKING");
       cb(result);
+      console.log(result);
     });
   }
 };

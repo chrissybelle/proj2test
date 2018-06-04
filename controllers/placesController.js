@@ -61,6 +61,7 @@ router.get("/api/places_of_interest", function (req, res) {
 
 //update/add saved places list
 router.put("/api/places_of_interest/:id", function (req, res) {
+    console.log("PUT - CONTROLLER WORKING");
     var user = "id = " + req.user.username;
 
     console.log("id", user);
@@ -78,6 +79,7 @@ router.put("/api/places_of_interest/:id", function (req, res) {
 });
 //delete city from saved list
 router.delete("/api/places_of_interest/:id", function (req, res) {
+    console.log("DELETE - CONTROLLER WORKING");
     var user = "id = " + req.user.username;
 
     place.deletePlacesWhere(condition, function (result) {

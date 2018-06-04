@@ -17,13 +17,15 @@ var place = {
         });
     },
 
-    //pull list
-    //****** */
-    // selectPlacesWhere: function(cb) {
-    //     orm.selectPlacesWhere(cols, "users", "places_of_interest", "users.username", "places_of_interest.username", "places_of_interest.city = 'jerseycity'", "users.username = 'cbelle'", function(res) {
-    //         cb(res);
-    //     });
+    //post distinct cities to saved_places in order to use in dropdown
+    // createCity: function(cols, vals, cb) {
+    //     console.log("POST CITIES - MODEL WORKING");
+    //     orm.createCity("")
     // }
+
+
+
+    //pull list
     selectPlacesWhere: function (user, city, cb) {
         var findUser = "places_of_interest.user = ";
         findUser += "'" + user + "'";
@@ -53,8 +55,21 @@ var place = {
         orm.deletePlacesWhere("places_of_interest", condition, function (res) {
             cb(res);
         });
-    }
+    },
+
+// pull cities for favorites dropdown
+selectDistinctCitiesWhere: function(user, cb) {
+    var findUser = "places_of_interest.user = ";
+    findUser += "'" + user + "'";
+    console.log("GET FAVORITES - MODEL WORKING");
+    orm.selectDistinctCitiesWhere("places_of_interest.city", "places_of_interest", findUser, function(res) {
+        cb(res);
+    })
+}
+
+
 };
+
 
 // Exports the database functions for the controller (placesController.js)
 module.exports = place;

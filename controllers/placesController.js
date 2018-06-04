@@ -41,13 +41,31 @@ router.post("/api/places_of_interest", function (req, res) {
     );
 });
 
+//pull cities for favorites dropdown
+router.get("/api/places_of_interest", function(req, res) {
+    console.log("GET FAVORITES - CONTROLLER WORKING");
+    console.log(req.body);
+    var user = req.user.username;
+
+    place.selectDistinctCitiesWhere(user, function(data) {
+        console.log(data);
+        console.log("GET CITIES request DONE");
+
+        // router.post("api/saved_places", function(req, res) {
+        //     place.createCity("city", data, function(result) {
+        //         res.json({ id: result.insertId});
+            // })
+        // })
+    });
+});
+
 
 // pull saved places list
 router.get("/api/places_of_interest", function (req, res) {
     console.log("GET - CONTROLLER WORKING");
     console.log(req.body);
     var user = req.user.username;
-    var city = "new york"; //hardcoded to test, need to pull value from selection
+    var city = req.body.selectedCity;
     place.selectPlacesWhere(user, city, function (data) {
         var hbsObject = {
             place: data
@@ -91,6 +109,8 @@ router.delete("/api/places_of_interest/:id", function (req, res) {
         }
     });
 });
+
+
 
 
 

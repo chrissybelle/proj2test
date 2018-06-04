@@ -132,7 +132,24 @@ selectPlacesWhere: function(table, condition1, condition2, cb) {
       cb(result);
       console.log(result);
     });
-  }
+  },
+
+  //pull cities for favorites dropdown
+  selectDistinctCitiesWhere: function(col, table, condition, cb) {
+    var queryString = "SELECT DISTINCT " + col;
+    queryString += " FROM " + table;
+    queryString += " WHERE " + condition;
+    console.log(queryString);
+    connection.query(queryString, function(err, result) {
+      if (err) {
+        throw err;
+      }
+      console.log("GET FAVORITES - ORM WORKING");
+      cb(result);
+      console.log(result);
+    });
+   }
+
 };
 
 // var orm = {

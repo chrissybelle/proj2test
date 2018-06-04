@@ -99,10 +99,40 @@ selectPlacesWhere: function(table, condition1, condition2, cb) {
    cb(result);
    console.log(result);
  });
-}
+},
+  // Update to table - adding an additional city or recommendation
+  updatePlacesWhere: function(table, objColVals, condition1, condition2, cb) {
+    var queryString = "UPDATE " + table;
 
+    queryString += " SET ";
+    queryString += objToSql(objColVals);
+    queryString += " WHERE " + condition1;
+    queryString += " AND " + condition2;
+
+    console.log(queryString);
+    connection.query(queryString, function(err, result) {
+      if (err) {
+        throw err;
+      }
+
+      cb(result);
+    });
+  },
+  //Delete city or recommendation from list
+  deletePlacesWhere: function(table, condition1, condition2, cb) {
+    var queryString = "DELETE FROM " + table;
+    queryString += " WHERE " + condition1;
+    queryString += " AND " + condition2;
+
+    connection.query(queryString, function(err, result) {
+      if (err) {
+        throw err;
+      }
+
+      cb(result);
+    });
+  }
 };
-
 
 // var orm = {
 

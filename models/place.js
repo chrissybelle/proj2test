@@ -2,12 +2,18 @@
 var orm = require("../config/orm.js");
 
 var place = {
-    //add new place to list
-    createPlacesWhere: function(cols, vals, cb) {
-        console.log("POST - MODEL WORKING");
-        orm.createPlacesWhere("places_of_interest", cols, vals, function(res) {
+    //I don't know if we need lines 6-10?
+    all: function (cb) {
+        orm.all("places_of_interest", function (res) {
             cb(res);
-            
+        });
+    },
+    //add new place to list
+    createPlacesWhere: function (cols, vals, cb) {
+        console.log("POST - MODEL WORKING");
+        orm.createPlacesWhere("places_of_interest", cols, vals, function (res) {
+            cb(res);
+
         });
     },
 
@@ -18,7 +24,7 @@ var place = {
     //         cb(res);
     //     });
     // }
-    selectPlacesWhere: function(user, city, cb) {
+    selectPlacesWhere: function (user, city, cb) {
         var findUser = "places_of_interest.user = ";
         findUser += "'" + user + "'";
 
@@ -26,13 +32,20 @@ var place = {
         findCity += "'" + city + "'";
 
         console.log("GET - MODEL WORKING");
-        orm.selectPlacesWhere("places_of_interest", findUser, findCity, function(res) {
+        orm.selectPlacesWhere("places_of_interest", findUser, findCity, function (res) {
+            cb(res);
+        });
+    },
+    update: function (user, city, cb) {
+        orm.update("places_of_interest", objColVals, condition, function (res) {
+            cb(res);
+        });
+    },
+    delete: function (condition, cb) {
+        orm.deletePlacesWhere("places_of_interest", condition, function (res) {
             cb(res);
         });
     }
-    //delete place from list
-
-
 };
 
 // Exports the database functions for the controller (placesController.js)

@@ -101,11 +101,9 @@ selectPlacesWhere: function(table, condition1, condition2, cb) {
  });
 },
   // Update to table - adding an additional city or recommendation
-  updatePlacesWhere: function(table, condition1, cb) {
+  updatePlacesWhere: function(table, city, condition1, cb) {
     var queryString = "UPDATE " + table;
-
-    queryString += " SET ";
-    queryString += objToSql(objColVals);
+    queryString += " SET " + city,
     queryString += " WHERE " + condition1;
     // queryString += " AND " + condition2;
 
@@ -114,7 +112,7 @@ selectPlacesWhere: function(table, condition1, condition2, cb) {
       if (err) {
         throw err;
       }
-      console.log("UPDATE - ORM WORKING");
+      console.log("UPDATE - ORM WORKING + records updated");
       cb(result);
       console.log(result);
     });

@@ -36,12 +36,20 @@ var place = {
             cb(res);
         });
     },
-    update: function (user, city, cb) {
-        orm.update("places_of_interest", objColVals, condition, function (res) {
+    updatePlacesWhere: function (city, user, cb) {
+        var findCity = "places_of_interest.city = ";
+        findCity += "'" + city + "'";
+
+        var findUser = "places_of_interest.user = ";
+        findUser += "'" + user + "'";
+        
+        console.log("UPDATE - MODEL WORKING");
+        orm.update("places_of_interest", findUser, findCity, function (res) {
             cb(res);
         });
     },
-    delete: function (condition, cb) {
+    deletePlacesWhere: function (condition, cb) {
+        console.log("DELETE - MODEL WORKING");
         orm.deletePlacesWhere("places_of_interest", condition, function (res) {
             cb(res);
         });

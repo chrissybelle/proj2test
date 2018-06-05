@@ -41,11 +41,11 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/members.html"));
   });
 
-  // app.get("/savedPlaces", isAuthenticated, function(req, res) {
-  //   // if (req.user) {
-  //   //   res.render("/members");
-  //   // }
-  //   res.sendFile(path.join(__dirname, "../public/savedPlaces.html"));
-  // });
+  app.get("/savedPlaces", isAuthenticated, function(req, res) {
+    // if (req.user) {
+    //   res.render("/members");
+    // }
+    res.sendFile(path.join(__dirname, "../public/savedPlaces.html"));
+  });
 
 };

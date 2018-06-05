@@ -37,6 +37,20 @@ form.login {
     opacity: 0.4;
   }
 
+#login{
+font-family: 'Pacifico', cursive;
+}
+
+#Welcome{
+  font-family: 'Scope One', serif;
+  margin-top: 45px;
+}
+
+.form-group, p{
+  font-family: 'Scope One', serif;
+  font-size: 16px;
+}
+
   h1{
     color: black;
     font-weight: 600;

@@ -57,35 +57,6 @@ var orm = {
   },
 
 // pull saved places list
-  //SELECT users.username as username,
-  // places_of_interest.city as city,
-  // places_of_interest.country as country,
-  // places_of_interest.lat as lat,
-  // places_of_interest.lng as lng,
-  // places_of_interest.category as category,
-  // places_of_interest.recommendation as recommendation
-  // FROM users
-  // RIGHT JOIN places_of_interest
-  // ON users.username = places_of_interest.user_id
-  // WHERE (places_of_interest.city = "city1"  AND users.username = "abc");
-
-  //********* */
-// selectPlacesWhere: function(cols, table1, table2, match1, match2, condition1, condition2) {
-//   var queryString = "SELECT " + cols.toString();
-//   queryString += " FROM " + table1;
-//   queryString += " RIGHT JOIN " + table2;
-//   queryString += " ON " + match1 + " = " + match2;
-//   queryString += " WHERE " + condition1;
-//   queryString += " AND " + condition2;
-//   console.log(queryString);
-
-//   connection.query(queryString, vals, function(err, result) {
-//     if (err) {
-//       throw err;
-//     }
-//     cb(result);
-//     });
-//   }
 selectPlacesWhere: function(table, condition1, condition2, cb) {
  var queryString = "SELECT * FROM " + table;
  queryString += " WHERE " + condition1;
@@ -101,33 +72,32 @@ selectPlacesWhere: function(table, condition1, condition2, cb) {
  });
 },
   // Update to table - adding an additional city or recommendation
-  updatePlacesWhere: function(table, city, condition1, cb) {
-    var queryString = "UPDATE " + table;
-    queryString += " SET " + city,
-    queryString += " WHERE " + condition1;
-    // queryString += " AND " + condition2;
+  // updatePlacesWhere: function(table, city, condition1, cb) {
+  //   var queryString = "UPDATE " + table;
+  //   queryString += " SET " + city,
+  //   queryString += " WHERE " + condition1;
+  //   // queryString += " AND " + condition2;
 
-    console.log(queryString);
-    connection.query(queryString, function(err, result) {
-      if (err) {
-        throw err;
-      }
-      console.log("UPDATE - ORM WORKING + records updated");
-      cb(result);
-      console.log(result);
-    });
-  },
+  //   console.log(queryString);
+  //   connection.query(queryString, function(err, result) {
+  //     if (err) {
+  //       throw err;
+  //     }
+  //     console.log("UPDATE - ORM WORKING + records updated");
+  //     cb(result);
+  //     console.log(result);
+  //   });
+  // },
+
   //Delete city or recommendation from list
-  deletePlacesWhere: function(table, condition1, condition2, cb) {
+  deletePlacesWhere: function(table, condition, cb) {
     var queryString = "DELETE FROM " + table;
-    queryString += " WHERE " + condition1;
-    queryString += " AND " + condition2;
+    queryString += " WHERE " + condition;
 
     connection.query(queryString, function(err, result) {
       if (err) {
         throw err;
       }
-
       console.log("DELETE - ORM WORKING");
       cb(result);
       console.log(result);

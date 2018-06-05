@@ -38,14 +38,14 @@ module.exports = function(app) {
     // if (req.user) {
     //   res.render("/members");
     // }
-    res.sendFile(path.join(__dirname, "../public/savedPlaces.html"));
+    res.sendFile(path.join(__dirname, "../public/members.html"));
   });
 
-  app.get("/savedPlaces", isAuthenticated, function(req, res) {
-    // if (req.user) {
-    //   res.render("/members");
-    // }
-    res.sendFile(path.join(__dirname, "../public/savedPlaces.html"));
-  });
+  // app.get("/savedPlaces", isAuthenticated, function(req, res) {
+  //   // if (req.user) {
+  //   //   res.render("/members");
+  //   // }
+  //   res.sendFile(path.join(__dirname, "../public/savedPlaces.html"));
+  // });
 
 };

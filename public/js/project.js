@@ -530,39 +530,21 @@ function initMap() {
     });
 
 }
-//to display cities in dropdown menu
-$.ajax("/api/places_of_interest", {
-    type: "GET"
-}).then(
-    function(response) {
-        console.log("pulled your list");
-        console.log(response);
-        var dropdownOption = "<option class='location'>" + response.city[i] +"</option>";
-        for (var i=0; i<response.length; i++) {
-            $("#savedList").append(dropdownOption);
-        };
-// $("#savedListsDiv").append("<input id='submitPlace' type='submit' value='Submit'>");
-    });
+// //to display cities in dropdown menu
+// $.ajax("/api/places_of_interest", {
+//     type: "GET"
+// }).then(
+//     function(response) {
+//         console.log("pulled your list");
+//         console.log(response);
+//         var dropdownOption = "<option class='location'>" + response.city[i] +"</option>";
+//         for (var i=0; i<response.length; i++) {
+//             $("#savedList").append(dropdownOption);
+//         };
+// // $("#savedListsDiv").append("<input id='submitPlace' type='submit' value='Submit'>");
+//     });
 
 
-// takes user's selected city from the dropdown and passes it to controller for the selectPlacesWhere GET request
-$("#submitPlace").on("click", function() {
-    var selectedCity = $(".location:checked").val();
-    var selectedList = {
-        city: selectedCity
-    };
-    console.log(selectedList);
-    $.ajax("/api/places_of_interest", {
-        type: "GET",
-        data: selectedList
-    }).then(
-        function() {
-            console.log("pulled your list");
-            // **** NEED TO REDIRECT USER TO PAGE OF SAVED PLACES
-            location.reload();
-        })
-
-});
 
 
 

@@ -2,12 +2,7 @@
 var orm = require("../config/orm.js");
 
 var place = {
-    //I don't know if we need lines 6-10?
-    all: function (cb) {
-        orm.all("places_of_interest", function (res) {
-            cb(res);
-        });
-    },
+    
     //add new place to list
     createPlacesWhere: function (cols, vals, cb) {
         console.log("POST - MODEL WORKING");
@@ -16,14 +11,6 @@ var place = {
 
         });
     },
-
-    //post distinct cities to saved_places in order to use in dropdown
-    // createCity: function(cols, vals, cb) {
-    //     console.log("POST CITIES - MODEL WORKING");
-    //     orm.createCity("")
-    // }
-
-
 
     //pull list
     selectPlacesWhere: function (user, city, cb) {
@@ -38,24 +25,29 @@ var place = {
             cb(res);
         });
     },
-    updatePlacesWhere: function (city, user, cb) {
-        var findCity = "places_of_interest.city = ";
-        findCity += "'" + city + "'";
 
-        var findUser = "places_of_interest.user = ";
-        findUser += "'" + user + "'";
+    // updatePlacesWhere: function (city, user, cb) {
+    //     var findCity = "places_of_interest.city = ";
+    //     findCity += "'" + city + "'";
+
+    //     var findUser = "places_of_interest.user = ";
+    //     findUser += "'" + user + "'";
         
-        console.log("UPDATE - MODEL WORKING");
-        orm.update("places_of_interest", findUser, findCity, function (res) {
-            cb(res);
-        });
-    },
-    deletePlacesWhere: function (condition, cb) {
-        console.log("DELETE - MODEL WORKING");
-        orm.deletePlacesWhere("places_of_interest", condition, function (res) {
-            cb(res);
-        });
-    },
+    //     console.log("UPDATE - MODEL WORKING");
+    //     orm.update("places_of_interest", findUser, findCity, function (res) {
+    //         cb(res);
+    //     });
+    // },
+
+deletePlacesWhere: function (selectedID, cb) {
+  var condition = "places_of_interest.id = "+ selectedID;
+  console.log("DELETE - MODEL WORKING");  
+orm.deletePlacesWhere("places_of_interest", condition, function (res) {
+  cb(res);
+  });
+},
+
+
 
 // pull cities for favorites dropdown
 selectDistinctCitiesWhere: function(user, cb) {

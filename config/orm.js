@@ -46,12 +46,12 @@ var orm = {
     console.log(queryString);
 
     connection.query(queryString, vals, function(err, result) {
-      console.log(vals);
+      // console.log(vals);
       if (err) {
         throw err;
       }
-      console.log("POST - ORM WORKING");
-      console.log(result);
+      // console.log("POST - ORM WORKING");
+      // console.log(result);
       cb(result);
     });
   },
@@ -66,7 +66,7 @@ selectPlacesWhere: function(table, condition1, condition2, cb) {
    if (err) {
      throw err;
    }
-   console.log("GET - ORM WORKING");
+   console.log("GET - selectPlacesWhere ORM WORKING");
    cb(result);
    console.log(result);
  });
@@ -98,9 +98,9 @@ selectPlacesWhere: function(table, condition1, condition2, cb) {
       if (err) {
         throw err;
       }
-      console.log("DELETE - ORM WORKING");
+      // console.log("DELETE - ORM WORKING");
       cb(result);
-      console.log(result);
+      // console.log(result);
     });
   },
 
@@ -109,14 +109,14 @@ selectPlacesWhere: function(table, condition1, condition2, cb) {
     var queryString = "SELECT DISTINCT " + col;
     queryString += " FROM " + table;
     queryString += " WHERE " + condition;
-    console.log(queryString);
+    // console.log(queryString);
     connection.query(queryString, function(err, result) {
       if (err) {
         throw err;
       }
-      console.log("GET FAVORITES - ORM WORKING");
+      // console.log("GET FAVORITES - ORM WORKING");
       cb(result);
-      console.log(result);
+      // console.log(result);
     });
    }
 

@@ -506,64 +506,39 @@ function initMap() {
                             recommendation: groups[place].venue.name
                         };
 
-                        // Send the POST request.
-                        $.ajax("/api/places_of_interest", {
-                            type: "POST",
-                            data: newLocation
-                        }).then(
-                            function () {
-                                $('#feedbackModal').modal('show')
-                                console.log("created new place");
-                                // Reload the page to get the updated list
+
+                        //show feedback in modal
+                        $("#recommend").on("click", "#saveLocation", function() {
+                            if (req.user) {
+                                $("#modalTitle").text("Saved!");
+                                $("#modalBody").text("Your selections have been saved!");
+                                $('#feedbackModal').modal('show');
+                            } else {
+                                $("#modalTitle").text("Hi there!");
+                                $("#modalBody").text("Please log in or create an account to get started.");
+                                $('#feedbackModal').modal('show');
+                            }
+                         
+                            // Send the POST request.
+                            $.ajax("/api/places_of_interest", {
+                                type: "POST",
+                                data: newLocation
+                            }).then(
+                                function() {
+                                    console.log("created new place");
+                                });
+
                                 $("#closeModal").on("click", function() {
+                                    // Reload the page to get the updated list
                                     location.reload();
                                 })
-
-                            }
-                        );
+                            });
                     }
                 });
-
             })
         })
-
     });
-
 }
-// //to display cities in dropdown menu
-// $.ajax("/api/places_of_interest", {
-//     type: "GET"
-// }).then(
-//     function(response) {
-//         console.log("pulled your list");
-//         console.log(response);
-//         var dropdownOption = "<option class='location'>" + response.city[i] +"</option>";
-//         for (var i=0; i<response.length; i++) {
-//             $("#savedList").append(dropdownOption);
-//         };
-// // $("#savedListsDiv").append("<input id='submitPlace' type='submit' value='Submit'>");
-//     });
-
-
-
-
-
-// // to pull favorites list
-// $("#submitPlace").on("click", function() {
-//     var pullThisList = $(".location:checked").val();
-//     console.log(pullThisList);
-//     $.ajax("/api/places_of_interest", {
-//         type: "GET",
-//         data: pullThisList
-//     }).then(
-//         function() {
-//             console.log("pulled your list");
-//             // **** NEED TO REDIRECT USER TO PAGE OF SAVED PLACES
-//             location.reload();
-//         })
-
-// });
-
 
 
 //transform location into latlng

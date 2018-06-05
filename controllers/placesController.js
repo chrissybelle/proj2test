@@ -7,25 +7,29 @@ var place = require("../models/place");
 
 //add new place to list
 router.post("/api/places_of_interest", function (req, res) {
-    console.log("POST - CONTROLLER WORKING " + req.user.username);
-    place.createPlacesWhere(
-        ["user", "city", "state", "country", "lat", "lng", "category", "recommendation"],
-        [req.user.username, req.body.city, req.body.state, req.body.country, req.body.lat, req.body.lng, req.body.category, req.body.recommendation],
-        function (result) {
-            res.json({ id: result.insertId });
-        }
-    );
+    if (req.user) {
+        // console.log("POST - CONTROLLER WORKING " + req.user.username);
+        place.createPlacesWhere(
+            ["user", "city", "state", "country", "lat", "lng", "category", "recommendation"],
+            [req.user.username, req.body.city, req.body.state, req.body.country, req.body.lat, req.body.lng, req.body.category, req.body.recommendation],
+            function (result) {
+                res.json({ id: result.insertId });
+            }
+        );
+    } else {
+        // console.log("log in modal");
+    }
 });
 
 //pull cities for favorites dropdown
 router.get("/api/places_of_interest", function(req, res) {
-    console.log("GET FAVORITES - CONTROLLER WORKING");
-    console.log(req.body);
+    // console.log("GET FAVORITES - CONTROLLER WORKING");
+    // console.log(req.body);
     var user = req.user.username;
 
     place.selectDistinctCitiesWhere(user, function(data) {
-        console.log(data);
-        console.log("GET CITIES request DONE");
+        // console.log(data);
+        // console.log("GET CITIES request DONE");
 
         res.json(data);
         // router.post("api/saved_places", function(req, res) {
@@ -42,14 +46,13 @@ router.get("/api/places_of_interest/:city", function (req, res) {
     console.log("GET - CONTROLLER WORKING");
     console.log(req.body);
     var user = req.user.username;
-    var city = req.body.selectedCity;
+    var city = req.body.city;
+    console.log(city)
     place.selectPlacesWhere(user, city, function (data) {
-        var hbsObject = {
-            place: data
-        };
+        
         // console.log(hbsObject);
-        res.render("index", hbsObject);
-        console.log("GET request DONE");
+        res.json(data);
+        console.log("GET request for list DONE");
     }
     );
 });

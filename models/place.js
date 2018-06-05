@@ -5,7 +5,7 @@ var place = {
     
     //add new place to list
     createPlacesWhere: function (cols, vals, cb) {
-        console.log("POST - MODEL WORKING");
+        // console.log("POST - MODEL WORKING");
         orm.createPlacesWhere("places_of_interest", cols, vals, function (res) {
             cb(res);
 
@@ -19,8 +19,8 @@ var place = {
 
         var findCity = "places_of_interest.city = ";
         findCity += "'" + city + "'";
-
-        console.log("GET - MODEL WORKING");
+        console.log(findCity)
+        console.log("GET - selectPlacesWhere MODEL WORKING");
         orm.selectPlacesWhere("places_of_interest", findUser, findCity, function (res) {
             cb(res);
         });
@@ -41,7 +41,7 @@ var place = {
 
 deletePlacesWhere: function (selectedID, cb) {
   var condition = "places_of_interest.id = "+ selectedID;
-  console.log("DELETE - MODEL WORKING");  
+//   console.log("DELETE - MODEL WORKING");  
 orm.deletePlacesWhere("places_of_interest", condition, function (res) {
   cb(res);
   });
@@ -53,7 +53,7 @@ orm.deletePlacesWhere("places_of_interest", condition, function (res) {
 selectDistinctCitiesWhere: function(user, cb) {
     var findUser = "places_of_interest.user = ";
     findUser += "'" + user + "'";
-    console.log("GET FAVORITES - MODEL WORKING");
+    // console.log("GET FAVORITES - MODEL WORKING");
     orm.selectDistinctCitiesWhere("places_of_interest.city", "places_of_interest", findUser, function(res) {
         cb(res);
     })

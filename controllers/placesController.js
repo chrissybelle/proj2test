@@ -7,8 +7,7 @@ var place = require("../models/place");
 
 //add new place to list
 router.post("/api/places_of_interest", function (req, res) {
-    if (req.user) {
-        // console.log("POST - CONTROLLER WORKING " + req.user.username);
+        console.log("POST - CONTROLLER WORKING " + req.user.username);
         place.createPlacesWhere(
             ["user", "city", "state", "country", "lat", "lng", "category", "recommendation"],
             [req.user.username, req.body.city, req.body.state, req.body.country, req.body.lat, req.body.lng, req.body.category, req.body.recommendation],
@@ -16,9 +15,6 @@ router.post("/api/places_of_interest", function (req, res) {
                 res.json({ id: result.insertId });
             }
         );
-    } else {
-        // console.log("log in modal");
-    }
 });
 
 //pull cities for favorites dropdown
@@ -46,7 +42,7 @@ router.get("/api/places_of_interest/:city", function (req, res) {
     console.log("GET - CONTROLLER WORKING");
     console.log(req.body);
     var user = req.user.username;
-    var city = req.body.city;
+    var city = req.params.city;
     console.log(city)
     place.selectPlacesWhere(user, city, function (data) {
         

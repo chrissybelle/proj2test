@@ -508,16 +508,8 @@ function initMap() {
 
 
                         //show feedback in modal
-                        $("#recommend").on("click", "#saveLocation", function() {
-                            if (req.user) {
-                                $("#modalTitle").text("Saved!");
-                                $("#modalBody").text("Your selections have been saved!");
-                                $('#feedbackModal').modal('show');
-                            } else {
-                                $("#modalTitle").text("Hi there!");
-                                $("#modalBody").text("Please log in or create an account to get started.");
-                                $('#feedbackModal').modal('show');
-                            }
+                        $('#feedbackModal').modal('show');
+                            
                          
                             // Send the POST request.
                             $.ajax("/api/places_of_interest", {
@@ -532,7 +524,7 @@ function initMap() {
                                     // Reload the page to get the updated list
                                     location.reload();
                                 })
-                            });
+                            
                     }
                 });
             })

@@ -18,7 +18,7 @@ module.exports = function (app) {
         req.logIn(user, function (err) {
           if (err) { return next(err); }
           res.status(200)
-          res.json("/members");
+          res.json("/home");
         });
       }
     })(req, res)

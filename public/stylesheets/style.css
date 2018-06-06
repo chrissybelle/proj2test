@@ -3,13 +3,12 @@ form.login {
   margin-top: 50px;
 }
 
-.navbar-default{
+.navbar-header{
+  margin: 35;
   color: #333;
   background-color: white;
-}
-
-.breadcrumb{
-  background-color: white;
+  font-family: 'Scope One', serif;
+  font-size: 16px;
 }
 
 #slideshow, img.bgM {
@@ -55,7 +54,7 @@ font-family: 'Pacifico', cursive;
   margin-top: 45px;
 }
 
-.login-page, p{
+.login-page, p, .modalFont{
   font-family: 'Scope One', serif;
   font-size: 16px;
 }
@@ -139,6 +138,13 @@ font-family: 'Pacifico', cursive;
     border-color: rgb(186,211,194);
   }
 
+#closeModal {
+  color: #333;
+  background-color: rgb(186,211,194);
+  font-family: 'Scope One', serif;
+  font-size: 14px;
+}
+
   .btn-default {
     color: #333;
     background-color: rgb(186,211,194);
@@ -166,4 +172,12 @@ font-family: 'Pacifico', cursive;
 
 .thumbnail{
   height: 300px;
+}
+
+#tableHeader{
+  background: rgb(186,211,194)
+}
+
+tbody{
+  background: rgb(235,227,206)
 }

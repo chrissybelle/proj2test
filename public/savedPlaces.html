@@ -11,7 +11,7 @@
 
     <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
     <link href="https://fonts.googleapis.com/css?family=Barlow|Courgette|Dancing+Script|Playfair+Display+SC" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css?family=Combo|El+Messiri|Give+You+Glory|Oldenburg|Pacifico|Scope+One" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- add bootstrap jquery -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -21,22 +21,20 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="container">
-                <div class="navbar-header">
-                    <ol class="breadcrumb">
-                        <li>
-                            <a href="/logout">Logout</a>
-                        </li>
-                        <li class="active">
-                            <span class="navbar-text">Welcome Back
-                                <span class="member-name"> !</span>
-                            </span>
-                        </li>
-                    </ol>
-                </div>
-            </div>
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li>
+                    <a href="/logout">Log Out</a>
+                </li>
+                <li>
+                    <a href="/home">Search</a>
+                </li>
+                <li class="active">Welcome Back
+                    <span class="member-name"></span> !
+                    <span class="glyphicon glyphicon-plane" aria-hidden="true"></span>
+                </li>
+            </ol>
         </div>
     </nav>
 
@@ -67,7 +65,7 @@
 
             <!-- DISPLAY SAVED LISTS HERE -->
             <div id="savedListsDiv">
-                <form>
+                <form id="formList">
                     <select id="savedList">
                     </select>
                     <input id="submitPlace" type="submit" value="Submit">
@@ -76,35 +74,25 @@
             </div>
 
 
-            <table class="table table-striped">
-                <thead>
+            <table class="table table-striped hidden" id="table">
+                <thead id="tableHeader">
                     <tr>
-                        <th>Firstname</th>
-                        <th>Lastname</th>
-                        <th>Email</th>
+                        <th>Delete</th>
+                        <th>Country</th>
+                        <th>State</th>
+                        <th>City</th>
+                        <th>Category</th>
+                        <th>Recommendation</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>John</td>
-                        <td>Doe</td>
-                        <td>john@example.com</td>
-                    </tr>
-                    <tr>
-                        <td>Mary</td>
-                        <td>Moe</td>
-                        <td>mary@example.com</td>
-                    </tr>
-                    <tr>
-                        <td>July</td>
-                        <td>Dooley</td>
-                        <td>july@example.com</td>
-                    </tr>
+                <tbody id="tableRows">
+
                 </tbody>
             </table>
 
 
         </div>
+
 
 
 

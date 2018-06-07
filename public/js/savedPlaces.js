@@ -27,6 +27,7 @@ $(document).ready(function () {
 // takes user's selected city from the dropdown and passes it to controller for the selectPlacesWhere GET request
 $("#submitPlace").on("click", function () {
   event.preventDefault();
+  $("#tableRows").empty();
   var selectedCity = $(".location:checked").val();
   console.log(selectedCity);
   $.ajax({
@@ -42,7 +43,7 @@ $("#submitPlace").on("click", function () {
       row = $("<tr>");
 
       rowDelete = $("<td>")
-      rowDelete.html("<label><input type='checkbox' class = 'checkboxDelete' value=" + data[i].id + "<label>");
+      rowDelete.html("<label><input type='checkbox' class = 'checkboxDelete' value='" + data[i].id + "'<label>");
       row.append(rowDelete);
 
       rowCountry = $("<td>");
@@ -65,38 +66,43 @@ $("#submitPlace").on("click", function () {
       rowRecommendation.append(data[i].recommendation);
       row.append(rowRecommendation);
 
-      $("#tableRows").append(row)
+      $("#tableRows").append(row) //NEED TO FIX SO THAT CLICKING "SUBMIT" DOES NOT KEEP ADDING ON THE SAME INFO
 
 
     }
-    $("#formList").append("<input id='deletePlace' type='submit' value='Delete'>");
+    $("#formList").html("<input id='deletePlace' type='submit' value='Delete'>");
   })
 
 });
 
-$("#deletePlace").on("click", function () {
 
+
+
+$("#formList").on("click", "#deletePlace", function (event) {
+  console.log("GOOD");
   var deleteItems = [];
 
   $(".checkboxDelete:checked").each(function () {
-    deleteItems.push($(this).val());
-  })
+    deleteItems.push($(this).val()); //(this).data("value");
+    console.log(deleteItems);
 
-  for (var j = 0; j < deleteItems.length; j++) {
+  for (var j=0; j<deleteItems.length; j++) {
 
     var id = parseInt(deleteItems[j]);
+    console.log(id);
     // Send the DELETE request.
     $.ajax("/api/places_of_interest/" + id, {
       type: "DELETE"
     }).then(
       function () {
-        console.log("deleted place", id);
+        console.log("deleted place: ", id);
         // Reload the page to get the updated list
-        location.reload();
+
       }
     )
   }
-  });
-
+          location.reload();
+})
+});
 
 

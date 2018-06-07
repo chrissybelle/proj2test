@@ -28,11 +28,7 @@ router.get("/api/places_of_interest", function(req, res) {
         // console.log("GET CITIES request DONE");
 
         res.json(data);
-        // router.post("api/saved_places", function(req, res) {
-        //     place.createCity("city", data, function(result) {
-        //         res.json({ id: result.insertId});
-            // })
-        // })
+
     });
 });
 
@@ -53,31 +49,14 @@ router.get("/api/places_of_interest/:city", function (req, res) {
     );
 });
 
-//update/add saved places list
-// router.put("/api/places_of_interest/:id", function (req, res) {
-//     console.log("PUT - CONTROLLER WORKING");
-//     var user = "id = " + req.user.username;
-
-//     console.log("id", user);
-
-//     place.updatePlacesWhere({
-//         city: req.body.city
-//     }, condition, function (result) {
-//         if (result.changedRows == 0) {
-//             // If no rows were changed, then the ID must not exist, so 404
-//             return res.status(404).end();
-//         } else {
-//             res.status(200).end();
-//         }
-//     });
-// });
 
 //delete city from saved list - NEED TO TEST
 router.delete("/api/places_of_interest/:id", function (req, res) {
     console.log("DELETE - CONTROLLER WORKING");
     
-    var selectedID = req.body.id; //we will need to capture and store the the id of the selected item using jquery and AJAX post in our project.js file
-    
+    var selectedID = req.params.id; //we will need to capture and store the the id of the selected item using jquery and AJAX post in our project.js file
+    console.log(selectedID);
+
     place.deletePlacesWhere(selectedID, function (result) {
     if (result.affectedRows == 0) {
     // If no rows were changed, then the ID must not exist, so 404

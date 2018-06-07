@@ -137,6 +137,12 @@ font-family: 'Pacifico', cursive;
   #twitter1{
     width: 70px;
   }
+
+  .loginPage{
+    margin-right: 50px;
+    margin-bottom: 50px;
+  }
+
   footer {
     clear: both;
     padding: 21px 0;

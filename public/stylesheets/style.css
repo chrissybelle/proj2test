@@ -4,11 +4,11 @@ form.login {
 }
 
 .navbar{
-  height:100px;
+  height:75px;
   width: 100%;
   color: #333;
   background-color: white;
-  border:2px solid #cccccc;
+  border:3px solid  rgb(186,211,194);
   margin:0px auto;
   text-justify: auto;
   font-family: 'Scope One', serif;

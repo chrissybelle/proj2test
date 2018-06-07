@@ -138,10 +138,10 @@ font-family: 'Pacifico', cursive;
     width: 70px;
   }
 
-  .loginPage{
-    margin-right: 50px;
-    margin-bottom: 50px;
-  }
+ #loginBody{
+  background-image: url("..assets/img/seigaiha.png");
+ }
+
 
   footer {
     clear: both;

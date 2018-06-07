@@ -9,8 +9,7 @@ form.login {
   color: #333;
   background-color: white;
   border:3px solid  rgb(186,211,194);
-  margin:0px auto;
-  text-justify: auto;
+  text-justify: center;
   font-family: 'Scope One', serif;
   font-size: 16px;
 }

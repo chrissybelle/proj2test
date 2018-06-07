@@ -138,7 +138,7 @@ font-family: 'Pacifico', cursive;
     width: 70px;
   }
 
- #loginBody{
+ #loginBody, #signupBody{
   background-image: url("../assets/img/seigaiha.png");
  }
 

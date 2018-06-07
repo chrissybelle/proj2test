@@ -7,7 +7,6 @@ var recommendationCounter = 0;
 var numRecommendations;
 var queryURL;
 
-
 //Load map when the page is fisrt loaded
 function initMap() {
 

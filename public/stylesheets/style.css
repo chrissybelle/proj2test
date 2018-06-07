@@ -72,8 +72,11 @@ font-family: 'Pacifico', cursive;
 #savedList, #submitPlace{
     font-family: 'Scope One', serif;
     font-size: 16px;
+    height: 75px;
+    width: 100px;
     color: black;
     background-color: rgb(186,211,194);
+    border-color: rgb(186,211,194);
 }
 
   h1{

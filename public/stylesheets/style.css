@@ -90,6 +90,16 @@ font-family: 'Pacifico', cursive;
   border-color: rgb(186,211,194);
 }
 
+#deletePlace{
+  font-family: 'Scope One', serif;
+  font-size: 16px;
+  height: 50px;
+  width: 100px;
+  color: black;
+  background-color: rgb(213, 220, 215);
+  border-color: rgb(213, 220, 215);
+}
+
   h1{
     color: black;
     font-weight: 600;

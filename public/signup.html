@@ -11,17 +11,24 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-          <ol class="breadcrumb">
-              <li><a href="/">Home</a></li>
-              <li><a href="/login">Log In</a></li>
-              <li class="active">Sign Up</li>
-            </ol>
-      </div>
+  <div class="row">
+    <div class="col-md-12">
+      <nav class="navbar">
+        <div class="container-fluid">
+          <ul class="nav navbar-nav navbar-left">
+            <li>
+              <a href="/">Home</a>
+            </li>
+            <li>
+              <a href="/login">Log In</a>
+            </li>
+            <li class="active">Sign Up</li>
+          </ul>
+        </div>
+      </nav>
     </div>
-  </nav>
+  </div>
+
   <div class="container">
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
@@ -34,11 +41,13 @@
           </div>
           <h3 class="Welcome">Are you ready to find Your Perfect Hotel?</h3>
           <div class="form-group" class="login-page">
-            <label for="exampleInputUsername"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>  Username</label>
+            <label for="exampleInputUsername">
+              <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Username</label>
             <input type="username" class="form-control" id="username-input" placeholder="Username">
           </div>
           <div class="form-group" class="login-page">
-            <label for="exampleInputPassword1"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span>  Password</label>
+            <label for="exampleInputPassword1">
+              <span class="glyphicon glyphicon-lock" aria-hidden="true"></span> Password</label>
             <input type="password" class="form-control" id="password-input" placeholder="Password">
           </div>
           <button type="submit" class="btn btn-default">Sign Up</button>

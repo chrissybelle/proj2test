@@ -21,22 +21,28 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-default navbar-static-top">
-        <div class="container">
-            <ol class="breadcrumb">
-                <li>
-                    <a href="/logout">Log Out</a>
-                </li>
-                <li>
-                    <a href="/home">Search</a>
-                </li>
-                <li class="active">Welcome Back
-                    <span class="member-name"></span> !
-                    <span class="glyphicon glyphicon-plane" aria-hidden="true"></span>
-                </li>
-            </ol>
+    <div class="row">
+        <div class="col-md-12">
+            <nav class="navbar">
+                <div class="container-fluid">
+                    <ul class="nav navbar-nav navbar-left">
+                        <li>
+                            <a href="/home"> Search</a>
+                        </li>
+                        <li>
+                            <a href="/logout"> Log Out</a>
+                        </li>
+                        <li class="active">
+                            <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> Favorites</a>
+                        </li>
+                        <li class="active">Welcome
+                            <span class="member-name">!</span>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
         </div>
-    </nav>
+    </div>
 
     <div id="slideshow">
         <img src="assets/img/barn.jpg" class="bgM" />

@@ -3,10 +3,14 @@ form.login {
   margin-top: 50px;
 }
 
-.navbar-header{
-  margin: 35;
+.navbar{
+  height:100px;
+  width: 100%;
   color: #333;
   background-color: white;
+  border:2px solid #cccccc;
+  margin:0px auto;
+  text-justify: auto;
   font-family: 'Scope One', serif;
   font-size: 16px;
 }
@@ -31,11 +35,11 @@ form.login {
   #white{
     color:#efeee7;
   }
-  .collapse.collapse.navbar-collapse{ 
+  /* .collapse.collapse.navbar-collapse{ 
     font-size: 18px;
     margin-top: 30px;
     margin-right: 100px
-  }
+  } */
   
   .page-header {
     padding: 1px;

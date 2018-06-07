@@ -372,6 +372,7 @@ function initMap() {
 
 
         $("#recSearch").on("click", function () {
+            $("#results").empty();
             var categories = [];
             var categoriesName = [];
 

@@ -77,7 +77,7 @@ font-family: 'Pacifico', cursive;
     color: black;
     background-color: rgb(213, 220, 215);
     border-color: rgb(213, 220, 215);
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 #savedList{
@@ -89,7 +89,6 @@ font-family: 'Pacifico', cursive;
   color: black;
   background-color: rgb(186,211,194);
   border-color: rgb(186,211,194);
-  padding-bottom: 20px;
 }
 
 #deletePlace{
@@ -100,7 +99,6 @@ font-family: 'Pacifico', cursive;
   color: black;
   background-color: rgb(213, 220, 215);
   border-color: rgb(213, 220, 215);
-  padding-bottom: 20px;
 }
 
   h1{

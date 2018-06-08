@@ -154,6 +154,7 @@ form.login {
     color: black;
     background-color: rgb(213, 220, 215);
     border-color: rgb(213, 220, 215);
+    margin-bottom: 25px;
 }
 
 #savedList{
@@ -178,7 +179,7 @@ form.login {
 }
 
 #savedListsDiv{
-  margin-bottom: 50px;
+  margin-bottom: 25px;
 }
 
   h1{
@@ -304,6 +305,8 @@ form.login {
 
 .thumbnail{
   height: 138px;
+  font-family: 'Scope One', serif;
+  font-size: 16px;
 }
 
 #tableHeader{

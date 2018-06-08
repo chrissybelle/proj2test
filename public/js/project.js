@@ -607,8 +607,8 @@ function createMarkerFourSquare(venue, j) {
 
     google.maps.event.addListener(marker, 'click', function () {
 
-        var locationName = "<p><strong> " + venue.name + "</strong></p>";
-        var locationAddress = "<p>Address: " + venue.location.address + "</br>";
+        var locationName = "<p class = popUp><strong> " + venue.name + "</strong></p>";
+        var locationAddress = "<p class = popUp>Address: " + venue.location.address + "</br>";
         //var locationPhone = "Phone Number: " + groups.venue.name + "</p>";
 
         infowindow.setContent(locationName + locationAddress);
@@ -632,14 +632,14 @@ function createMarker(place) {
     //expand marker when clicked
     google.maps.event.addListener(marker, 'click', function () {
         if (place.name != undefined) {
-            var hotelName = "<p><strong> " + place.name + "</strong></p>";
+            var hotelName = "<p class = popUp><strong> " + place.name + "</strong></p>";
         }
         else {
             var hotelName = "";
         }
 
         if (place.formatted_address != undefined) {
-            var hotelAddress = "<p>Hotel Address: " + place.formatted_address + "</br>";
+            var hotelAddress = "<p class = popUp>Hotel Address: " + place.formatted_address + "</br>";
         }
         else {
             var hotelAddress = "";
@@ -661,7 +661,7 @@ function createMarker(place) {
 
 
         if (place.website != undefined) {
-            var bookHotel = " <a href=" + place.website + " target ='_blank'> Book Online</a></p>";
+            var bookHotel = " <a class = popUp href=" + place.website + " target ='_blank'> Book Online</a></p>";
         }
         else {
             var bookHotel = "";

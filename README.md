@@ -9,7 +9,11 @@
   
   ![Optional Text](../master/public/assets/img/HomePage.png)
 
-<p>Our latest feature allows users to Sign Up for a Username and Password or Log In and access their favorite recommendations for future travel destinations!</p>
+<p>Our latest feature allows users to Sign Up for a Username and Password or Log In, if they already have an existing account.</p>
+
+  ![Optional Text](../master/public/assets/img/Login.png)
+
+<p>Once the user logs in to their account, they will be able to access their favorite recommendations, as well as to add and delete recommendations for cities they are interested in traveling to. </p>
 
   ![Optional Text](../master/public/assets/img/Favorites.png)
 

@@ -26,15 +26,17 @@
             <nav class="navbar">
                 <div class="container-fluid">
                     <ul class="nav navbar-nav navbar-left">
+                            <li class="active">Welcome
+                                    <span class="member-name"></span>!
+                                </li>
+                                <li>
+                                        <a href="/home">Search</a>
+                                    </li> 
                         <li>
                             <a href="/logout">Log Out</a>
                         </li>
-                        <li>
-                            <a href="/home">Search</a>
-                        </li> 
-                        <li class="active">
-                            <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> Favorites</a>
-                        </li>
+
+
                     </ul>
                 </div>
             </nav>
@@ -94,20 +96,33 @@
                 </tbody>
             </table>
 
+            <div class="row">
+                <div class="col-md-12 hidden" id="mapHolder">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h3 class="panel-title">Your Results on Google Maps</h3>
+                    </div>
+                    <div id="map">
+                    </div>
+                  </div>
+                </div>
 
         </div>
 
+    </div>
 
 
 
 
-        <footer>
-            <div class="container">
-                <!-- add cbelle name -->
-                &copy Copyright 2018 Gabi Nicole Jocelyn cbelle
-
-
-        </footer>
+        
+        <div  id="add"></div>
+        <div class="  clearfooter"></div>
+        
+        <div id="footer">
+            
+              <p class="footer-block">&copy Copyright 2018 Gabi Nicole Jocelyn cbelle</p>
+            
+          </div>
 
 
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIxGfQn0QePtVWkz6vFL31V-gi7hbKLnY&callback=initMap&libraries=places"

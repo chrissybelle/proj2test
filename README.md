@@ -7,10 +7,10 @@
 
 <p>Once the user selects the category, five recommendations will populate.  The venue names will display, the rating as well as the top review. Users are able to access the venues displayed via the hyperlink in the venue name. </p>
   
-  ![Optional Text](../master/assets/images/perfecthotelone.png)
+  ![Optional Text](../master/public/assets/img/HomePage.png)
 
 <p>Our latest feature allows users to Sign Up for a Username and Password or Log In and access their favorite recommendations for future travel destinations!</p>
 
-  ![Optional Text](../master/assets/images/perfecthotelone.png)
+  ![Optional Text](../master/public/assets/img/Favorites.png)
 
 <strong>Authors: Gabi, Nicole, Jocelyn and Cbelle </strong>
